@@ -23,13 +23,17 @@
     <table class="table">
         <thead>
         <tr>
-            <th>Value</th>
+            <th>Название</th>
+            <th>Текст</th>
+            <th>Адрес</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="value" items="${values}">
+        <c:forEach var="accident" items="${accidents}">
             <tr>
-                <td><c:out value="${value}"/></td>
+                <td><c:out value="${accident.name}"/></td>
+                <td><c:out value="${accident.text}"/></td>
+                <td><c:out value="${accident.address}"/></td>
             </tr>
         </c:forEach>
         </tbody>
