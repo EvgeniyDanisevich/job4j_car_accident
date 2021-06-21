@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="ru.job4j.accident.model.Accident" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -24,6 +25,16 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <br>
+
+<div class="container">
+    <div class="row">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="<c:url value='/create'/>">Добавить инцидент</a>
+            </li>
+        </ul>
+    </div>
+</div>
 <div class="container">
     <table class="table">
         <thead>
