@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="ru.job4j.accident.model.Accident" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -10,6 +9,7 @@
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>Accident</title>
 </head>
@@ -47,7 +47,12 @@
         <tbody>
         <c:forEach var="accident" items="${accidents}">
             <tr>
-                <td><c:out value="${accident.name}"/></td>
+                <td>
+                    <a href="<c:url value='/update?id=${accident.id}'/>">
+                        <i class="fa fa-edit mr-3"></i>
+                    </a>
+                    <c:out value="${accident.name}"/>
+                </td>
                 <td><c:out value="${accident.text}"/></td>
                 <td><c:out value="${accident.address}"/></td>
             </tr>

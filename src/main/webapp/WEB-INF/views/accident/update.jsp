@@ -11,21 +11,21 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous">
 
-<title>Добавление информации о новом инциденте</title>
+<title>Редактирование информации об инциденте</title>
 <body>
 <div class="container">
-    <form action="${pageContext.request.contextPath}/save" method="post">
+    <form action="<c:url value='/save?id=${accident.id}'/>" method='POST'>
         <div class="form-group">
             <label>Название</label>
-            <input  type="text" class="form-control" name="name">
+            <input  type="text" class="form-control" name="name" value="${accident.name}">
         </div>
         <div class="form-group">
             <label>Описание</label>
-            <input  type="text" class="form-control" name="text">
+            <input  type="text" class="form-control" name="text" value="${accident.text}">
         </div>
         <div class="form-group">
             <label>Адрес</label>
-            <input  type="text" class="form-control" name="address">
+            <input  type="text" class="form-control" name="address" value="${accident.address}">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Сохранить</button>

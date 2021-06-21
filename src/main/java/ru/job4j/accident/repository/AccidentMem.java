@@ -33,4 +33,8 @@ public class AccidentMem {
         }
         accidents.put(id.get(), accident);
     }
+
+    public Accident findById(int id) {
+        return accidents.get(id);
+    }
 }
