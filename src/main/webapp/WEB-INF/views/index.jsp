@@ -55,6 +55,7 @@
                 </td>
                 <td><c:out value="${accident.text}"/></td>
                 <td><c:out value="${accident.address}"/></td>
+
             </tr>
         </c:forEach>
         </tbody>

@@ -13,6 +13,7 @@
 
 <title>Добавление информации о новом инциденте</title>
 <body>
+<br>
 <div class="container">
     <form action="${pageContext.request.contextPath}/save" method="post">
         <div class="form-group">
@@ -26,6 +27,14 @@
         <div class="form-group">
             <label>Адрес</label>
             <input  type="text" class="form-control" name="address">
+        </div>
+        <div class="form-group">
+            <label>Тип</label>
+            <select name="type.id" class="form-control">
+                <c:forEach var="type" items="${types}" >
+                    <option value="${type.id}">${type.name}</option>
+                </c:forEach>
+            </select>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Сохранить</button>

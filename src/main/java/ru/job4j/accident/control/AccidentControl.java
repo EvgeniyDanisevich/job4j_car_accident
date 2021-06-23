@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.job4j.accident.model.Accident;
+import ru.job4j.accident.model.AccidentType;
 import ru.job4j.accident.service.AccidentService;
+import java.util.Collection;
 
 @Controller
 public class AccidentControl {
@@ -18,7 +20,9 @@ public class AccidentControl {
     }
 
     @GetMapping("/create")
-    public String create() {
+    public String create(Model model) {
+        Collection<AccidentType> types = service.findAllTypes();
+        model.addAttribute("types", types);
         return "accident/create";
     }
 

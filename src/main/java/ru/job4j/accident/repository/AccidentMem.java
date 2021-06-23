@@ -2,6 +2,7 @@ package ru.job4j.accident.repository;
 
 import org.springframework.stereotype.Repository;
 import ru.job4j.accident.model.Accident;
+import ru.job4j.accident.model.AccidentType;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -14,6 +15,10 @@ public class AccidentMem {
 
     private final AtomicInteger id = new AtomicInteger(0);
 
+    private final Map<Integer, AccidentType> types = new HashMap<>();
+
+    private final AtomicInteger typeId = new AtomicInteger(0);
+
     public AccidentMem() {
         accidents.put(id.incrementAndGet(),
                 new Accident( "First Name", "First text", "First address"));
@@ -21,10 +26,18 @@ public class AccidentMem {
                 new Accident( "Second Name", "Second text", "Second address"));
         accidents.put(id.incrementAndGet(),
                 new Accident( "Third Name", "Third text", "Third address"));
+
+        types.put(typeId.incrementAndGet(), AccidentType.of(typeId.get(), "Две машины"));
+        types.put(typeId.incrementAndGet(), AccidentType.of(typeId.get(), "Машина и человек"));
+        types.put(typeId.incrementAndGet(), AccidentType.of(typeId.get(), "Машина и велосипед"));
     }
 
     public Collection<Accident> findAll() {
         return accidents.values();
+    }
+
+    public Collection<AccidentType> findAllTypes() {
+        return types.values();
     }
 
     public void create(Accident accident) {
