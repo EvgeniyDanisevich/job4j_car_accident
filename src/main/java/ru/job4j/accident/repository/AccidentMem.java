@@ -56,8 +56,10 @@ public class AccidentMem {
     public void create(Accident accident) {
         if (accident.getId() == 0) {
             accident.setId(id.incrementAndGet());
+            accidents.put(id.get(), accident);
+        } else {
+            accidents.put(accident.getId(), accident);
         }
-        accidents.put(id.get(), accident);
     }
 
     public Accident findById(int id) {

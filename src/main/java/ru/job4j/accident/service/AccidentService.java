@@ -47,7 +47,15 @@ public class AccidentService {
         return accidentMem.findRuleById(id);
     }
 
-    public Set<Rule> generateRules(String[] ids) {
+    public void createWithTypeAndRules(Accident accident, String typeId, String[] ids) {
+        accident.setType(findTypeById(Integer.parseInt(typeId)));
+        if (ids != null) {
+            accident.setRules(generateRules(ids));
+        }
+        create(accident);
+    }
+
+    private Set<Rule> generateRules(String[] ids) {
         return Arrays.stream(ids)
                 .map(Integer::parseInt)
                 .map(this::findRuleById)
