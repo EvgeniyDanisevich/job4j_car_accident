@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.model.AccidentType;
 import ru.job4j.accident.model.Rule;
-import ru.job4j.accident.service.AccidentService;
+import ru.job4j.accident.service.AccidentJdbcService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
 
 @Controller
 public class AccidentControl {
-    private final AccidentService service;
+    private final AccidentJdbcService service;
 
-    public AccidentControl(AccidentService service) {
+    public AccidentControl(AccidentJdbcService service) {
         this.service = service;
     }
 

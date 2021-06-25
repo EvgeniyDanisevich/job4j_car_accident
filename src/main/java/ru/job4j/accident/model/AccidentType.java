@@ -7,9 +7,8 @@ public class AccidentType {
 
     private String name;
 
-    public static AccidentType of(int id, String name) {
+    public static AccidentType of(String name) {
         AccidentType type = new AccidentType();
-        type.id = id;
         type.name = name;
         return type;
     }
