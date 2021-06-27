@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-@Service
+//@Service
 public class AccidentHibernateService {
     private final AccidentHibernate accidentHibernate;
     private final AccidentTypeHibernate accidentTypeHibernate;

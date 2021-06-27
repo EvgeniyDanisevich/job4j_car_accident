@@ -8,7 +8,7 @@ import ru.job4j.accident.model.AccidentType;
 import java.util.Collection;
 import java.util.List;
 
-@Repository
+//@Repository
 public class AccidentTypeHibernate {
     private final SessionFactory sessionFactory;
 

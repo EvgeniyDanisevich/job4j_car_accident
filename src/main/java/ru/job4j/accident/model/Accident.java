@@ -16,7 +16,7 @@ public class Accident {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "type_id", nullable = false)
     private AccidentType type;
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany
     private Set<Rule> rules;
 
     public Accident() {
