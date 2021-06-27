@@ -6,6 +6,7 @@
     <table>
         <tr>
             <td>UserName:</td>
+            ${usernameError}
             <td><input type='text' name='username'></td>
         </tr>
         <tr>
