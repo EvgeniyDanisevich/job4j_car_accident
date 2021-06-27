@@ -1,18 +1,26 @@
 package ru.job4j.accident.model;
 
-public class RuleAccident {
+import javax.persistence.*;
+import java.util.Objects;
 
+@Entity(name = "RuleAccident")
+@Table(name = "rule_accident")
+public class RuleAccident {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private int accidentId;
+    @ManyToOne
+    private Accident accident;
 
-    private int ruleId;
+    @ManyToOne
+    private Rule rule;
 
     public RuleAccident() { }
 
-    public RuleAccident(int accidentId, int ruleId) {
-        this.accidentId = accidentId;
-        this.ruleId = ruleId;
+    public RuleAccident(Accident accident, Rule rule) {
+        this.accident = accident;
+        this.rule = rule;
     }
 
     public int getId() {
@@ -23,19 +31,36 @@ public class RuleAccident {
         this.id = id;
     }
 
-    public int getAccidentId() {
-        return accidentId;
+    public Accident getAccident() {
+        return accident;
     }
 
-    public void setAccidentId(int accidentId) {
-        this.accidentId = accidentId;
+    public void setAccident(Accident accident) {
+        this.accident = accident;
     }
 
-    public int getRuleId() {
-        return ruleId;
+    public Rule getRule() {
+        return rule;
     }
 
-    public void setRuleId(int ruleId) {
-        this.ruleId = ruleId;
+    public void setRule(Rule rule) {
+        this.rule = rule;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        RuleAccident that = (RuleAccident) o;
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

@@ -16,8 +16,10 @@ create table if not exists accident (
     type_id int references type(id)
 );
 
-create table if not exists rule_accident(
-    id serial primary key,
-    accident_id int references accident(id),
-    rule_id int references rule(id)
-);
+insert into type values (1, 'Две машины');
+insert into type values (2, 'Машина и человек');
+insert into type values (3, 'Машина и велосипед');
+
+insert into rule values (1, 'Статья 1');
+insert into rule values (2, 'Статья 2');
+insert into rule values (3, 'Статья 3');

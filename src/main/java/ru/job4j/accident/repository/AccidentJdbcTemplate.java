@@ -15,7 +15,7 @@ import java.sql.Types;
 import java.util.Collection;
 import java.util.HashSet;
 
-@Repository
+//@Repository
 public class AccidentJdbcTemplate {
     private final JdbcTemplate jdbc;
 
@@ -40,7 +40,7 @@ public class AccidentJdbcTemplate {
         this.jdbc = jdbc;
         this.accidentTypeJdbc = accidentTypeJdbc;
         this.ruleJdbc = ruleJdbc;
-        init();
+//        init();
     }
 
     private void init() {
@@ -93,7 +93,7 @@ public class AccidentJdbcTemplate {
             accident.setId((Integer) id);
             if (accident.getRules() != null) {
                 for (Rule rule : accident.getRules()) {
-                    ruleJdbc.createRuleAccident(new RuleAccident(accident.getId(), rule.getId()));
+                    ruleJdbc.createRuleAccident(new RuleAccident(accident, rule));
                 }
             }
         }
@@ -109,7 +109,7 @@ public class AccidentJdbcTemplate {
         );
         if (accident.getRules() != null) {
             for (Rule rule : accident.getRules()) {
-                ruleJdbc.createRuleAccident(new RuleAccident(accident.getId(), rule.getId()));
+                ruleJdbc.createRuleAccident(new RuleAccident(accident, rule));
             }
         }
     }

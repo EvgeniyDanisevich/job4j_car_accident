@@ -8,11 +8,12 @@ import ru.job4j.accident.repository.AccidentJdbcTemplate;
 import ru.job4j.accident.repository.AccidentTypeJdbcTemplate;
 import ru.job4j.accident.repository.RuleJdbcTemplate;
 
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-@Service
+//@Service
 public class AccidentJdbcService {
     private final AccidentJdbcTemplate db;
     private final AccidentTypeJdbcTemplate typeDB;

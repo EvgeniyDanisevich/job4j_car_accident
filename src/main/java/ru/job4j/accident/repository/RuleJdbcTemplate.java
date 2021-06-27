@@ -12,7 +12,7 @@ import ru.job4j.accident.model.RuleAccident;
 import java.sql.PreparedStatement;
 import java.util.Collection;
 
-@Repository
+//@Repository
 public class RuleJdbcTemplate {
     private final JdbcTemplate db;
 
@@ -63,8 +63,8 @@ public class RuleJdbcTemplate {
         String sql = "insert into rule_accident(accident_id, rule_id) values (?, ?)";
         db.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, new String[] {"id"});
-            ps.setInt(1, ruleAccident.getAccidentId());
-            ps.setInt(2, ruleAccident.getRuleId());
+            ps.setInt(1, ruleAccident.getAccident().getId());
+            ps.setInt(2, ruleAccident.getRule().getId());
             return ps;
         }, keyHolder);
         if (keyHolder.getKey() != null) {
