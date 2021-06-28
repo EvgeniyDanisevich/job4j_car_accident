@@ -1,11 +1,14 @@
 package ru.job4j.accident.control;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.model.User;
 import ru.job4j.accident.repository.AuthorityRepository;
@@ -25,21 +28,26 @@ public class RegControl {
     }
 
     @PostMapping("/reg")
-    public String save(@ModelAttribute User user, Model model) {
+    public String save(@ModelAttribute User user) {
         user.setEnabled(true);
         user.setPassword(encoder.encode(user.getPassword()));
         user.setAuthority(authorities.findByAuthority("ROLE_USER"));
-        if (users.findUserByUsername(user.getUsername()) == null) {
-            users.save(user);
-            return "redirect:/login";
+        if (users.findUserByUsername(user.getUsername()) != null) {
+            throw new DataIntegrityViolationException("Пользователь с таким ником уже существует, выберите другой ник");
         }
-        model.addAttribute("usernameError",
-                "Пользователь с таким ником уже существует, выберите другой ник");
-        return "reg";
+        users.save(user);
+        return "redirect:/login";
     }
 
     @GetMapping("/reg")
     public String reg(@ModelAttribute Accident accident) {
         return "reg";
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ModelAndView handleIllegalStateException (DataIntegrityViolationException ex) {
+        ModelAndView modelAndView =  new ModelAndView("reg");
+        modelAndView.addObject("exceptionMsg", ex.getMessage());
+        return modelAndView;
     }
 }
